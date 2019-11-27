@@ -1,18 +1,22 @@
 #include<stdlib.h>
 #include <stdlib.h>
 #include<string.h>
+#include<stdio.h>
+#include<unistd.h>
 
 
 char ** parse_args( char * line ){
   char *current = line;
   char *token;
-  char * args[100];
+  char ** args = malloc(10 * sizeof(char*));
   int i = 0;
   while(current != NULL){
     token = strsep(&current, " ");
     args[i] = token;
     i++;
   }
+  args[i] = NULL;
+  return args;
 }
 
 int main(){
